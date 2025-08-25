@@ -1,0 +1,15 @@
+# Ignore all
+*
+
+# Explicit Exception
+!.gitignore
+
+!awesome/
+!awesome/**
+
+!picom/
+!picom/**
+
+!polybar/
+!polybar/**
+
