@@ -1,4 +1,5 @@
 local awful = require('awful')
+local gears = require("gears")
 
 local mod = require('bindings.mod')
 
@@ -15,3 +16,5 @@ clientbuttons = gears.table.join(
         awful.mouse.client.resize(c)
     end)
 )
+
+return clientbuttons

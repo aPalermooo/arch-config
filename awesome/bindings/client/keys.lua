@@ -1,4 +1,6 @@
 local awful = require ("awful")
+local gears = require("gears")
+
 local mod = require("bindings.mod")
 
 clientkeys = gears.table.join(
@@ -44,3 +46,5 @@ clientkeys = gears.table.join(
         end ,
         {description = "(un)maximize horizontally", group = "client"})
 )
+
+return clientkeys
