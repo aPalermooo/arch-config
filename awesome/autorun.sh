@@ -6,5 +6,5 @@ run() {
 	fi
 }
 
-run "polybar"
 run "picom -b"
+run "discord --start-minimized"
