@@ -10,22 +10,22 @@ local beautiful = require("beautiful")
 -- Default error handling
 require("config.errorhandling")
 
--- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme.lua")
 
--- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
+-- init layout
+require("config.layouts")
 
--- Default modkey.
-modkey = "Mod4" 
+-- init keyboard shortcuts and bind them
+local bindings = require("bindings")
+root.keys(bindings.global.key)
+root.buttons(bindings.global.mouse)
 
+require("rules")
 
 
 
 
 
 -- Run autostart file
-awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+awful.spawn.with_shell("~/.config/awesome/config/autorun.sh")
