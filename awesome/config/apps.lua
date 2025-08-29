@@ -1,5 +1,5 @@
 return {
-    terminal = "xterm",
+    terminal = "kitty",
     editor = os.getenv("EDITOR") or "nano",
-    editor_cmd = "xterm -e " .. (os.getenv("EDITOR") or "nano")
+    editor_cmd = "kitty -e " .. (os.getenv("EDITOR") or "nano")
 }

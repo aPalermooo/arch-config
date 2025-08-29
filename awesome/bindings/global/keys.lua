@@ -5,6 +5,7 @@ require("awful.hotkeys_popup.keys")
 
 -- local apps = require("config.apps")
 local mod = require("bindings.mod")
+local apps = require("config.apps")
 
 
 -- {{{ Key bindings
@@ -54,7 +55,7 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ mod.super,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ mod.super,           }, "Return", function () awful.spawn(apps.terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ mod.super, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),

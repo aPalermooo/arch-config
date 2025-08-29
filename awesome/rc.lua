@@ -1,4 +1,3 @@
-
 -- Ensure dependency is present
 pcall(require, "luarocks.loader")
 
