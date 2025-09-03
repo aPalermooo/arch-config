@@ -12,6 +12,7 @@ require("config.errorhandling")
 beautiful.init("~/.config/awesome/theme.lua")
 
 -- init window layout
+require("config.tags")
 require("config.layouts")
 
 -- init keyboard shortcuts and bind them
@@ -22,8 +23,10 @@ root.keys(bindings.global.key)
 require("rules")
 require("signals")
 
-require("widgets.default.menu")
-require("widgets.default.wibar")
+-- init widgets
+-- require("widgets.default.menu")
+-- require("widgets.default.wibar")
+require("widgets.topbar")
 
 -- Run autostart file
 awful.spawn.with_shell("~/.config/awesome/config/autorun.sh")

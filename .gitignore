@@ -6,6 +6,7 @@
 
 !awesome/
 !awesome/**
+awesome/log/**
 
 !picom/
 !picom/**
