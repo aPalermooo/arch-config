@@ -9,7 +9,7 @@ local beautiful = require("beautiful")
 require("config.errorhandling")
 
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/theme.lua")
+beautiful.init("~/.config/awesome/theme/theme.lua")
 
 -- init window layout
 require("config.tags")

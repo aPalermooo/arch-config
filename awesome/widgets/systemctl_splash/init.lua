@@ -39,6 +39,5 @@ awful.screen.connect_for_each_screen( function(s)
 
     -- Show the splash and start keygrabber
     s.systemctl_splash.visible = true
-    -- s.systemctl_splash_keygrabber:start()
 
 end )
