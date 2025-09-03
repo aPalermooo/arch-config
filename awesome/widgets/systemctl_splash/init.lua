@@ -27,17 +27,22 @@ awful.screen.connect_for_each_screen( function(s)
         layout = wibox.layout.align.horizontal
     }
 
-    local keygrabber
-    keygrabber = awful.keygrabber.run(
-        function(_, key, event)
-            if key == 'Escape' then 
-                s.systemctl_splash.visible = false
-                awful.keygrabber.stop(keygrabber)
+
+    awesome.connect_signal("systemctl_open", function()
+        s.systemctl_splash.visible = true
+
+        local keygrabber
+        keygrabber = awful.keygrabber.run(
+            function(_, key, event)
+                if key == 'Escape' then 
+                    s.systemctl_splash.visible = false
+                    awful.keygrabber.stop(keygrabber)
+                end
             end
-        end
     )  
+    end)
 
     -- Show the splash and start keygrabber
-    s.systemctl_splash.visible = true
+    s.systemctl_splash.visible = false
 
 end )

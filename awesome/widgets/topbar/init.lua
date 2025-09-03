@@ -33,9 +33,10 @@ awful.screen.connect_for_each_screen( function(s)
     })
 
     local clock_component = require("widgets/topbar/components/clock")
+    local systemctl_component = require("widgets.topbar.components.systemctl")
 
-
-    clock = clock_component.create_new(s)
+    local clock = clock_component.create_new(s)
+    local systemctl = systemctl_component.create_new(s)
 
     s.topbar:setup {
         layout = wibox.layout.align.horizontal,
@@ -49,6 +50,7 @@ awful.screen.connect_for_each_screen( function(s)
         },
         { -- Right
             clock,
+            systemctl,
             layout = wibox.layout.align.horizontal,
         },
     }
