@@ -7,8 +7,8 @@ run() {
 }
 
 # Run autostart programs
-run "picom -b"
-run "discord --start-minimized"
+run "picom" -b &
+# run "discord" &
 
 
 # Log Action was complete

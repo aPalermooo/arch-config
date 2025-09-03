@@ -23,6 +23,7 @@ awful.screen.connect_for_each_screen( function(s)
         height = bar_height,
         position = "top", -- R 
         type = "dock", -- R
+        ontop = true,
         screen = s,
         shape = function (cr, width, height)
             gears.shape.rectangle(cr,width,height)

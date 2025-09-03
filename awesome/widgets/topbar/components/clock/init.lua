@@ -8,3 +8,4 @@ function clock_component.create_new(s)
 end
 
 return clock_component
+ 

@@ -24,9 +24,8 @@ require("rules")
 require("signals")
 
 -- init widgets
--- require("widgets.default.menu")
--- require("widgets.default.wibar")
 require("widgets.topbar")
+require("widgets.systemctl_splash")
 
 -- Run autostart file
 awful.spawn.with_shell("~/.config/awesome/config/autorun.sh")
