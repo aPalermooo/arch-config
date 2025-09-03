@@ -11,4 +11,7 @@ awesome/log/autorun.log
 !picom/
 !picom/**
 
+!README.md
+
+
 
