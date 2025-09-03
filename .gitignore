@@ -6,11 +6,12 @@
 
 !awesome/
 !awesome/**
-awesome/log/**
+awesome/log/autorun.log
 
 !picom/
 !picom/**
 
 !polybar/
 !polybar/**
+
 
