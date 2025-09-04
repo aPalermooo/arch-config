@@ -26,26 +26,74 @@ awful.screen.connect_for_each_screen( function(s)
         end,
         bg = "#101314"
     })
-    
-    local clock_component = require("widgets/topbar/components/clock")
-    local clock = clock_component.create_new(s)
 
-    local suspend_btn = wibox.widget {
-    text = "Suspend",
-    widget = wibox.widget.textbox,
-    align = "center",
-    valign = "center",
-    buttons = awful.util.table.join(
+    local shutdown_btn = wibox.widget {
+        text = "Shutdown",
+        widget = wibox.widget.textbox,
+        align = "center",
+        valign = "center",
+        buttons = awful.util.table.join(
             awful.button({}, 1, function()
                 s.systemctl_splash.visible = false
                 awful.keygrabber.stop(keygrabber)
-                awful.spawn("systemctl suspend")
+                awful.spawn("systemctl poweroff")
             end)
         )
     }
+
+    local restart_btn = wibox.widget {
+        text = "Restart",
+        widget = wibox.widget.textbox,
+        align = "center",
+        valign = "center",
+        buttons = awful.util.table.join(
+            awful.button({}, 1, function()
+                s.systemctl_splash.visible = false
+                awful.keygrabber.stop(keygrabber)
+                awful.spawn("systemctl reboot")
+            end)
+        )
+    }
+
+    local suspend_btn = wibox.widget {
+        text = "Suspend",
+        widget = wibox.widget.textbox,
+        align = "center",
+        valign = "center",
+        buttons = awful.util.table.join(
+                awful.button({}, 1, function()
+                    s.systemctl_splash.visible = false
+                    awful.keygrabber.stop(keygrabber)
+                    awful.spawn("systemctl suspend")
+                end)
+            )
+    }
+
+    local lock_btn = wibox.widget {
+        text = "Lock",
+        widget = wibox.widget.textbox,
+        align = "center",
+        valign = "center",
+        buttons = awful.util.table.join(
+                awful.button({}, 1, function()
+                    s.systemctl_splash.visible = false
+                    awful.keygrabber.stop(keygrabber)
+                    awesome.quit()
+                end)
+            )
+    }
+
+    local button_layout = wibox.layout.fixed.horizontal()
+    button_layout.spacing = 10
+
+    button_layout:add(shutdown_btn)
+    button_layout:add(restart_btn)
+    button_layout:add(suspend_btn)
+    button_layout:add(lock_btn)
+
     
     s.systemctl_splash:setup {
-        suspend_btn,
+        button_layout,
         halign = "center",
         valign = "center",
         widget = wibox.container.place,
