@@ -20,17 +20,7 @@ awful.screen.connect_for_each_screen( function(s)
         bg = "#101314"
     })
 
-    local shutdown_btn = wibox.widget {
-        text = "Shutdown",
-        widget = wibox.widget.textbox,
-        align = "center",
-        valign = "center",
-        buttons = awful.util.table.join(
-            awful.button({}, 1, function()
-                awful.spawn("systemctl poweroff")
-            end)
-        )
-    }
+
 
     local restart_btn = wibox.widget {
         text = "Restart",

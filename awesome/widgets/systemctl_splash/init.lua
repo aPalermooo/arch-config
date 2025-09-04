@@ -9,10 +9,14 @@ local dpi = xresources.apply_dpi
 
 awful.screen.connect_for_each_screen( function(s) 
 
-    s.systemctl_splash = awful.wibar({
+    -- Screen Dimension dependent geometry 
+    local screen_width = s.geometry.width
+    local screen_height = s.geometry.height
 
-        width = 200,
-        height = 100,
+
+    s.systemctl_splash = awful.wibar({
+        width = screen_width,
+        height = screen_height,
 
         type = "splash",
         ontop = true,
@@ -22,9 +26,29 @@ awful.screen.connect_for_each_screen( function(s)
         end,
         bg = "#101314"
     })
+    
+    local clock_component = require("widgets/topbar/components/clock")
+    local clock = clock_component.create_new(s)
 
-    s.systemctl_splash : setup {
-        layout = wibox.layout.align.horizontal
+    local suspend_btn = wibox.widget {
+    text = "Suspend",
+    widget = wibox.widget.textbox,
+    align = "center",
+    valign = "center",
+    buttons = awful.util.table.join(
+            awful.button({}, 1, function()
+                s.systemctl_splash.visible = false
+                awful.keygrabber.stop(keygrabber)
+                awful.spawn("systemctl suspend")
+            end)
+        )
+    }
+    
+    s.systemctl_splash:setup {
+        suspend_btn,
+        halign = "center",
+        valign = "center",
+        widget = wibox.container.place,
     }
 
 
