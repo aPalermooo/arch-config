@@ -14,6 +14,9 @@ awful.screen.connect_for_each_screen( function(s)
     local screen_height = s.geometry.height
 
 
+    local icon_size = dpi(100) -- Refactor R
+    local icon_spacing = dpi(30)
+
     s.systemctl_splash = awful.wibar({
         width = screen_width,
         height = screen_height,
@@ -24,12 +27,18 @@ awful.screen.connect_for_each_screen( function(s)
         shape = function (cr, width, height)
             gears.shape.rectangle(cr,width,height)
         end,
-        bg = "#101314"
+        bg = "#10131499", --Refactor
     })
 
     local shutdown_btn = wibox.widget {
-        text = "Shutdown",
-        widget = wibox.widget.textbox,
+        {
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-shutdown.svg",
+            resize = true,
+            forced_height = icon_size, 
+            forced_width = icon_size,
+            widget = wibox.widget.imagebox,
+        },
+        layout = wibox.container.place,
         align = "center",
         valign = "center",
         buttons = awful.util.table.join(
@@ -42,8 +51,14 @@ awful.screen.connect_for_each_screen( function(s)
     }
 
     local restart_btn = wibox.widget {
-        text = "Restart",
-        widget = wibox.widget.textbox,
+        {
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-restart.svg",
+            resize = true,
+            forced_height = icon_size, 
+            forced_width = icon_size,
+            widget = wibox.widget.imagebox,
+        },
+        layout = wibox.container.place,
         align = "center",
         valign = "center",
         buttons = awful.util.table.join(
@@ -56,8 +71,14 @@ awful.screen.connect_for_each_screen( function(s)
     }
 
     local suspend_btn = wibox.widget {
-        text = "Suspend",
-        widget = wibox.widget.textbox,
+        {
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-suspend.svg",
+            resize = true,
+            forced_height = icon_size, 
+            forced_width = icon_size,
+            widget = wibox.widget.imagebox,
+        },
+        layout = wibox.container.place,
         align = "center",
         valign = "center",
         buttons = awful.util.table.join(
@@ -70,8 +91,14 @@ awful.screen.connect_for_each_screen( function(s)
     }
 
     local lock_btn = wibox.widget {
-        text = "Lock",
-        widget = wibox.widget.textbox,
+        {
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-lock-screen.svg",
+            resize = true,
+            forced_height = icon_size, 
+            forced_width = icon_size,
+            widget = wibox.widget.imagebox,
+        },
+        layout = wibox.container.place,
         align = "center",
         valign = "center",
         buttons = awful.util.table.join(
@@ -84,7 +111,7 @@ awful.screen.connect_for_each_screen( function(s)
     }
 
     local button_layout = wibox.layout.fixed.horizontal()
-    button_layout.spacing = 10
+    button_layout.spacing = icon_spacing
 
     button_layout:add(shutdown_btn)
     button_layout:add(restart_btn)
