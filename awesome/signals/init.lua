@@ -18,6 +18,14 @@ client.connect_signal("manage", function (c)
     end
 end)
 
+client.connect_signal("manage", function(c)
+    local naughty = require("naughty")
+    naughty.notify({
+        title = "New Client",
+        text  = c.name .. " | " .. c.class .. " | Screen: " .. c.screen.index
+    })
+end)
+
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})

@@ -25,30 +25,32 @@ function top.create(c)
             awful.mouse.client.resize(c)
         end)
     )
-    
-    top_titlebar : setup {
-        { -- Left
-            -- awful.titlebar.widget.iconwidget(c),
-            -- buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-            { -- Title
-                align  = 'center',
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
-            buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
-        },
-        { -- Right
-            -- awful.titlebar.widget.floatingbutton (c),
-            -- awful.titlebar.widget.maximizedbutton(c),
-            -- awful.titlebar.widget.stickybutton   (c),
-            -- awful.titlebar.widget.ontopbutton    (c),
-            -- awful.titlebar.widget.closebutton    (c),
-            layout = wibox.layout.fixed.horizontal()
-        },
-        layout = wibox.layout.align.horizontal
+
+    -- Header (icon + title)
+    local header = wibox.widget {
+        awful.titlebar.widget.iconwidget(c),
+        awful.titlebar.widget.titlewidget(c),
+        spacing = 10,
+        layout  = wibox.layout.fixed.horizontal,
+    }
+
+    -- Centered container
+    local centered_header = wibox.widget {
+        header,
+        halign = "center",
+        valign = "center",
+        widget = wibox.container.place,
+    }
+
+    -- Apply mouse buttons so you can drag/resize
+    centered_header:buttons(buttons)
+
+    -- Setup layout (align: left, middle, right)
+    top_titlebar:setup {
+        nil,
+        centered_header,
+        nil,
+        layout = wibox.layout.align.horizontal,
     }
 end
 

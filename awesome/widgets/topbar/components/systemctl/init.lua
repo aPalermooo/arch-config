@@ -6,8 +6,11 @@ local systemctl_component = {}
 
 function systemctl_component.create_new(s) 
     local button = wibox.widget {
-        text = "X",
-        widget = wibox.widget.textbox
+        image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/cs-power.svg",
+        resize = true,
+        forced_height = 20,
+        forced_width = 20,
+        widget = wibox.widget.imagebox,
     }
 
     -- Add a left-click mouse binding
