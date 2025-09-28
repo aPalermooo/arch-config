@@ -25,7 +25,7 @@ require("signals")
 
 -- init widgets
 require("widgets.topbar")
--- require("widgets.dock")
+require("widgets.dock")
 require("widgets.systemctl_splash")
 
 -- Run autostart file
