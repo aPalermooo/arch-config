@@ -122,6 +122,9 @@ theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
+
+-- CUSTOM ICON UPDATOR LIBRARY
+
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 local icon_dir = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/"
@@ -137,7 +140,7 @@ theme.ic_icons = {
 
 }
 
-theme.ic_dynamic_classes = { "Alacritty", "kitty", "St", "URxvt", "Termite" }
+theme.ic_dynamic_classes = { "Alacritty", "kitty", "St", "URxvt", "Termite", "firefox"}
 theme.ic_dynamic_icons = {
 	["- NVIM$"] = icon_dir .. "vim.png",
 	["vim touch"] = icon_dir .. "vim.png",
@@ -145,7 +148,10 @@ theme.ic_dynamic_icons = {
 	["^ranger$"] = icon_dir .. "file-manager.png",
 	["^spt$"] = icon_dir .. "spotify.png",
 	["^googler$"] = icon_dir .. "google.png",
-	["- rtv"] = icon_dir .. "reddit.png"
+	["- rtv"] = icon_dir .. "reddit.png",
+
+	["YouTube"] = icon_dir .. "youtube.png",
+	["Twitch"] = icon_dir .. "twitch.png"
 }
 
 
