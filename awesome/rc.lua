@@ -10,6 +10,7 @@ require("config.errorhandling")
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme/theme.lua")
+require('lib/icon_customizer'){ delay = 0.5 }
 
 -- init window layout
 require("config.tags")

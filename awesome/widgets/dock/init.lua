@@ -33,36 +33,9 @@ awful.screen.connect_for_each_screen( function(s)
         bg = "#101314FF", -- R
     })
 
-    local tasklist_buttons = gears.table.join(
-        awful.button({}, 1, function(c) -- left click
-            if c == client.focus then
-                c.minimized = true
-            else
-                c:emit_signal("request::activate", "tasklist", { raise = true })
-        end
-            -- c:activate { } -- context = "tasklist", action = "toggle_minimization" }
-            -- optional: emit a custom signal if you want others to listen
-            -- if s and s.mytasklist then s.mytasklist:emit_signal("custom::release", c) end
-        end),
-        awful.button({}, 3, function() -- right click
-            awful.menu.client_list { theme = { width = 250 } }
-        end),
-        awful.button({}, 4, function() awful.client.focus.byidx(-1) end),
-        awful.button({}, 5, function() awful.client.focus.byidx( 1) end)
-    )
+    local tasklist_component = require("widgets.dock.components.tasklist")
 
-    s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-        -- {
-        --     -- awful.button({ }, 1, function () end),
-        --     -- awful.button({ }, 3, function() end),
-        --     -- awful.button({ }, 4, function() end),
-        --     -- awful.button({ }, 5, function() end),
-        -- }
-    }
-
+    local tasklist = tasklist_component.create_new(s)
 
     -- Arrange Children on Widget
     s.dock:setup {

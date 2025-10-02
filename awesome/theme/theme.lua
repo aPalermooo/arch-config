@@ -124,7 +124,34 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+local icon_dir = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/"
+theme.ic_icons = {
+	["Chromium"] = icon_dir .. "chromium.png",
+	["firefox"] = icon_dir .. "firefox.png",
+	["Zathura"] = icon_dir .. "zathura.png",
+	["Steam"] = icon_dir .. "steam.png",
+	["discord"] = icon_dir .. "discord.png",
+	["Alacritty"] = icon_dir .. "terminal.png",
+	["kitty"] = icon_dir .. "terminal.png",
+    ["code-oss"] = icon_dir .. "visual-studio-code.png"
+
+}
+
+theme.ic_dynamic_classes = { "Alacritty", "kitty", "St", "URxvt", "Termite" }
+theme.ic_dynamic_icons = {
+	["- NVIM$"] = icon_dir .. "vim.png",
+	["vim touch"] = icon_dir .. "vim.png",
+	["- TMUX$"] = icon_dir .. "tmux.png",
+	["^ranger$"] = icon_dir .. "file-manager.png",
+	["^spt$"] = icon_dir .. "spotify.png",
+	["^googler$"] = icon_dir .. "google.png",
+	["- rtv"] = icon_dir .. "reddit.png"
+}
+
+
+theme.ic_fallback_icon = icon_dir .. "default_icon.png"
+
+
 
 return theme
 

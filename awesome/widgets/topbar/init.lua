@@ -35,7 +35,7 @@ awful.screen.connect_for_each_screen( function(s)
         -- bg_dark: 1c2224
     })
 
-    local clock_component = require("widgets/topbar/components/clock")
+    local clock_component = require("widgets.topbar.components.clock")
     local systemctl_component = require("widgets.topbar.components.systemctl")
 
     local clock = clock_component.create_new(s)

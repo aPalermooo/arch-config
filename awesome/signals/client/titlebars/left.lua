@@ -20,6 +20,7 @@ left_titlebar:setup {
     { -- TOP
         awful.titlebar.widget.closebutton    (c),
         awful.titlebar.widget.maximizedbutton (c),
+        awful.titlebar.widget.minimizebutton (c),
         layout = wibox.layout.fixed.vertical,
     },
     { -- MIDDLE
