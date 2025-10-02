@@ -32,7 +32,7 @@ awful.screen.connect_for_each_screen( function(s)
 
     local shutdown_btn = wibox.widget {
         {
-            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-shutdown.svg",
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-shutdown.png",
             resize = true,
             forced_height = icon_size, 
             forced_width = icon_size,
@@ -52,7 +52,7 @@ awful.screen.connect_for_each_screen( function(s)
 
     local restart_btn = wibox.widget {
         {
-            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-restart.svg",
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-restart.png",
             resize = true,
             forced_height = icon_size, 
             forced_width = icon_size,
@@ -72,7 +72,7 @@ awful.screen.connect_for_each_screen( function(s)
 
     local suspend_btn = wibox.widget {
         {
-            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-suspend.svg",
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-suspend.png",
             resize = true,
             forced_height = icon_size, 
             forced_width = icon_size,
@@ -92,7 +92,7 @@ awful.screen.connect_for_each_screen( function(s)
 
     local lock_btn = wibox.widget {
         {
-            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-lock-screen.svg",
+            image = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/system-lock-screen.png",
             resize = true,
             forced_height = icon_size, 
             forced_width = icon_size,

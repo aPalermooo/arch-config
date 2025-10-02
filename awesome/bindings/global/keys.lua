@@ -19,6 +19,12 @@ globalkeys = gears.table.join(
     awful.key({ mod.super,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
+    awful.key({mod.super,            }, "space", function()
+    awful.spawn("rofi -show drun -theme ~/.config/rofi/config.rasi")
+    end,
+    {description = "launch app menu", group = "launcher"}),
+
+
     awful.key({ mod.super,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -74,9 +80,9 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ mod.super, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ mod.super,           }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ mod.super,           }, "o", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ mod.super, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+    awful.key({ mod.super, "Shift"   }, "o", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
     awful.key({ mod.super, "Control" }, "n",
