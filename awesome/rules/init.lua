@@ -33,15 +33,21 @@ awful.rules.rules = {
             type = { "normal", "dialog" },
             -- class = { "Firefox" },
         },
-        properties = { titlebars_enabled = true }
+        properties = { titlebars_enabled = true },
+        except_any = { fullscreen = true }
     },
 
 }
 
+-- preserve full screen functionality
 client.connect_signal("property::fullscreen", function(c)
     if c.fullscreen then
+        awful.titlebar.hide(c)
+        awful.titlebar.hide(c, "left")
         awesome.emit_signal("widgets::hide", c.screen)
     else
+        awful.titlebar.show(c)
+        awful.titlebar.show(c, "left")
         awesome.emit_signal("widgets::show", c.screen)
     end
 end)

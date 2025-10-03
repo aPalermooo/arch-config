@@ -67,14 +67,18 @@ awful.screen.connect_for_each_screen( function(s)
 
     awful.screen.padding(s, { bottom = bar_height })
 
+    local show = true
+
     awesome.connect_signal("widgets::hide", function(screen)
         if screen == s then
+            show = false
             s.dock.visible = false
         end
     end)
 
     awesome.connect_signal("widgets::show", function(screen)
         if screen == s then
+            show = true
             s.dock.visible = true
         end
     end)
@@ -88,6 +92,7 @@ awful.screen.connect_for_each_screen( function(s)
             s.dock.y = pos
         end,
     }
+
 
     s.dock:connect_signal("mouse::enter", function()
         dock_animation.target = screen_height - bar_height
