@@ -34,10 +34,17 @@ awful.rules.rules = {
             -- class = { "Firefox" },
         },
         properties = { titlebars_enabled = true }
-    }
+    },
+
 }
 
-
+client.connect_signal("property::fullscreen", function(c)
+    if c.fullscreen then
+        awesome.emit_signal("widgets::hide", c.screen)
+    else
+        awesome.emit_signal("widgets::show", c.screen)
+    end
+end)
 
 
 client.connect_signal("mouse::enter", function(c)

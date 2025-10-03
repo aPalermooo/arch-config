@@ -65,5 +65,17 @@ awful.screen.connect_for_each_screen( function(s)
         layout = wibox.layout.align.horizontal,
     }
 
-    awful.screen.padding(s, { top = bar_height })
+    awesome.connect_signal("widgets::hide", function(screen)
+        if screen == s then
+            s.topbar.visible = false
+        end
+    end)
+
+    awesome.connect_signal("widgets::show", function(screen)
+        if screen == s then
+            s.topbar.visible = true
+        end
+    end)
+
+    -- awful.screen.padding(s, { top = bar_height /2  })
 end)

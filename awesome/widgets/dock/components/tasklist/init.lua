@@ -4,32 +4,8 @@ local gears = require("gears")
 
 local M = {}
 
--- Your SVG icon directory
+-- icon directory
 local icon_dir = "/home/cinnamon/.config/awesome/theme/icons/candy-icons-master/apps/scalable/"
-
--- Function to convert SVG -> PNG and update widget when ready
-local function load_svg_icon(svg_path, size, widget)
-    local cache_dir = gears.filesystem.get_cache_dir() .. "icons/"
-    gears.filesystem.make_directories(cache_dir)
-
-    local filename = svg_path:match("([^/]+)%.svg$") or "icon"
-    local png_path = cache_dir .. filename .. ".png"
-
-    if gears.filesystem.file_readable(png_path) then
-        return png_path
-    else
-        local cmd = string.format("rsvg-convert -w %d -h %d '%s' -o '%s'",
-            size, size, svg_path, png_path)
-
-        awful.spawn.easy_async_with_shell(cmd, function()
-            if gears.filesystem.file_readable(png_path) and widget then
-                widget.image = png_path
-            end
-        end)
-    end
-
-    return nil
-end
 
 function M.create_new(s)
 
@@ -60,14 +36,18 @@ function M.create_new(s)
                 {
                 wibox.widget.base.make_widget(),
                 forced_height = 5,
+                forced_width = 50,
                 id            = 'background_role',
                 widget        = wibox.container.background,
             },
             {
-            {
-                id     = 'clienticon',
-                widget = awful.widget.clienticon,
-            },
+                {
+                    {
+                        id     = 'clienticon',
+                        widget = awful.widget.clienticon,
+                    },
+                    widget = wibox.container.place,
+                },
             margins = 5,
             widget  = wibox.container.margin
         },
